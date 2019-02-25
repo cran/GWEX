@@ -1,9 +1,0 @@
-all: $(SHLIB) clean
- 
-$(SHLIB): GWex_disag.o GWex_stats.o
- 
-GWex_disag.mod: GWex_disag.o
-GWex_stats.mod: GWex_stats.o
- 
-clean:
-	@rm -rf *.mod *.o

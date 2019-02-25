@@ -1,4 +1,4 @@
-52fadce4ecae012a62a9eab5583dd3c7 *DESCRIPTION
+76f2d6be57fef6e87c832e7eb1d5ba77 *DESCRIPTION
 a5179abb28872d3eb6de98d3eddb2747 *NAMESPACE
 8d3b2f7b056aa67e481a33039318ce5d *R/GWexPrec_lib.r
 09b9cd0aa98e6560c175ce7b6652406f *R/GWexTemp_lib.r
@@ -29,4 +29,3 @@ d904d490fc54870ffdf7393362ae450d *man/fitGwexModel.Rd
 bd965e91fa669c4f0e470cc2dc90a29b *man/simGwexModel.Rd
 05cfd90ff0921e18600dcb3d64bd336a *src/GWex_disag.f90
 d65d371d722df2137bf938fe48dd64f8 *src/GWex_stats.f90
-166e87c900974e24f8f6e91a5930fc24 *src/Makevars
