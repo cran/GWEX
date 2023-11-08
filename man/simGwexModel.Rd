@@ -4,10 +4,16 @@
 \alias{simGwexModel}
 \title{simGwexModel}
 \usage{
-simGwexModel(objGwexFit, nb.rep = 10, d.start = as.Date("01011900",
-  "\%d\%m\%Y"), d.end = as.Date("31121999", "\%d\%m\%Y"),
-  objGwexObs = NULL, prob.class = c(0.5, 0.75, 0.9, 0.99),
-  objGwexSim = NULL, nCluster = 1)
+simGwexModel(
+  objGwexFit,
+  nb.rep = 10,
+  d.start = as.Date("01011900", "\%d\%m\%Y"),
+  d.end = as.Date("31121999", "\%d\%m\%Y"),
+  objGwexObs = NULL,
+  prob.class = c(0.5, 0.75, 0.9, 0.99),
+  objGwexSim = NULL,
+  nCluster = 1
+)
 }
 \arguments{
 \item{objGwexFit}{an object of class \code{\linkS4class{GwexFit}}}
@@ -41,25 +47,29 @@ to=as.Date("31/12/2014",format="\%d/\%m/\%Y"),by='day')
 #               FIT AND SIMULATE FROM THE PRECIPITATION MODEL
 ###############################################################
 # Format observations: create a G-Wex object
-myObsPrec = GwexObs(variable='Prec',date=vecDates,obs=dailyPrecipGWEX[,1:2])
+myObsPrec = GwexObs(variable='Prec',date=vecDates,obs=dailyPrecipGWEX[,1,drop=FALSE])
 
-# default options except for 'nChainFit'
-list.options = list(nChainFit=1000)
+# Fit GWEX precipitation model, default options except for the threshold th
+myParPrec = fitGwexModel(myObsPrec,listOption=list(th=0.5)) # fit model
 
-# generate 2 scenarios for one year, using a existing 'GwexFit' object
-mySimPrec = simGwexModel(objGwexFit=myParPrecGWEX, nb.rep=2, d.start=vecDates[1],
-d.end=vecDates[365])
+# Generate 2 scenarios for one year, using the 'GwexFit' object
+mySimPrec = simGwexModel(objGwexFit=myParPrec, nb.rep=2, d.start=vecDates[1],
+d.end=vecDates[10])
 mySimPrec # print object
 
 ###############################################################
-#     FIT AND SIMULATE FROM THE TEMPERATURE MODEL, COND. TO PRECIPITATION
+#     FIT AND SIMULATE FROM THE TEMPERATURE MODEL
 ###############################################################
 # Format observations: create a G-Wex object
 myObsTemp = GwexObs(variable='Temp',date=vecDates,obs=dailyTemperGWEX)
 
-# generate 2 scenarios for one year, using a existing 'GwexFit' object
-mySimTemp = simGwexModel(objGwexFit=myParTempGWEX, nb.rep=2, d.start=vecDates[1], 
-d.end=vecDates[365])
+# Fit GWEX temperature model
+myParTemp = fitGwexModel(myObsTemp,listOption=list(hasTrend=TRUE,typeMargin='Gaussian',
+depStation='Gaussian'))
+
+# Generate 2 scenarios for one year, using an existing 'GwexFit' object
+mySimTemp = simGwexModel(objGwexFit=myParTemp, nb.rep=2, d.start=vecDates[1], 
+                          d.end=vecDates[365],objGwexObs=myObsPrec)
 mySimTemp # print object
 }
 \author{
