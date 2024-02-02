@@ -1,7 +1,7 @@
-bdf1a0ce0d00a50f93e87e6f7c137ebc *DESCRIPTION
+cbd8eb6e50708fe28d22f2f2d9b5fb1e *DESCRIPTION
 a2b5b845064e5c01eb3a818f5d7dfd9e *NAMESPACE
 bf7ff8ac4f81a6e40383af4d43a9c83f *R/GWexPrec_lib.r
-59298dff91616af6ca9103355ee98a01 *R/GWexTemp_lib.r
+afbdf424fdbac748de6dcb10f8e744c8 *R/GWexTemp_lib.r
 940eab80418de368a4c3d528a3c4b967 *R/GWex_lib.r
 0bbeb658078f43c286eac936cd9b2d22 *R/RcppExports.R
 93d1f948ac05c1d2a3b5f271b1c14114 *R/dailyPrecipGWEX-data.r
